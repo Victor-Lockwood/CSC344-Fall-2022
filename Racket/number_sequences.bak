@@ -1,0 +1,21 @@
+#lang racket
+
+( define ( square n )
+   ( * n n )
+)
+
+( define ( cube n )
+   ( * n n n )
+)
+
+( define ( sequence name n )
+   ( cond
+      ( ( = n 1 )
+        ( display ( name 1 ) ) ( display " " )
+      )
+      ( else
+        ( sequence name ( - n 1 ) )
+        ( display ( name n ) ) ( display " " )
+      )
+    )
+)

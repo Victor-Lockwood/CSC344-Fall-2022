@@ -1,0 +1,8 @@
+#lang racket
+
+( require 2htdp/image )
+
+(  define ( screaming-into-the-void max-size color )
+    ( text "AAAAAAAAAAAAAAA\n" max-size color )
+)
+

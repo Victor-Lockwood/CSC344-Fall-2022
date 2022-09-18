@@ -1,0 +1,13 @@
+#lang racket
+
+( require 2htdp/image )
+
+; Some code is from Professor Graci's lecture notes
+
+( define ( rgb-value )
+   ( random 256 )
+)
+
+( define ( random-color )
+   ( color ( rgb-value ) ( rgb-value ) ( rgb-value ) )
+)

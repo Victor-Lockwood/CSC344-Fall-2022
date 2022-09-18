@@ -1,0 +1,32 @@
+#lang racket
+
+( require 2htdp/image )
+
+; Code modified from professor Graci's lecture code
+
+( define ( paint-nested-pacman from to delta color1 color2 )
+   ( define radius ( * from delta ) )
+
+   ( cond
+      ( ( = from to )
+        ( if (even? from )
+             ( rotate 30 (wedge radius 300 "solid" color1 ) )
+             ( rotate 30 (wedge radius 300 "solid" color2 ) )
+        )
+      )
+      ( ( < from to )
+        ( if ( even? from )
+             ( overlay
+               ( rotate 30 (wedge radius 300 "solid" color1 ) )
+               ( paint-nested-pacman ( + from 1 ) to delta color1 color2 )
+             )
+             ( overlay
+                ( rotate 30 (wedge radius 300 "solid" color2 ) )
+                ( paint-nested-pacman ( + from 1 ) to delta color1 color2 )
+             )
+
+           )
+        )
+      )
+                
+)
