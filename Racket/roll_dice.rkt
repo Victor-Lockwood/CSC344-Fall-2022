@@ -54,29 +54,43 @@
    )
 )
 
-; This chunk is under construction...
-; Referred to Raven's code for guidance: https://www.cs.oswego.edu/~dmitche7/CSC344WorkSite/Racket/Racket%202%20Assignment.pdf
-( define ( roll-for-odd-even-odd )
+; Found use of "odd?" and "even?" comparators when looking at classmate's code:
+; https://www.cs.oswego.edu/~dmitche7/CSC344WorkSite/Racket/Racket%202%20Assignment.pdf
+; These methods are my own however and we approached in different ways
+
+( define ( roll-for-odd )
    ( define result ( roll-die ) )
    ( display result )
    ( display " " )
    ( cond
       ( ( even? result ) 
+        ( roll-for-odd )
+      )
+   )
+)
+
+( define ( roll-for-even )
+   ( define result ( roll-die ) )
+   ( display result )
+   ( display " " )
+   ( cond
+      ( ( odd? result ) 
+        ( roll-for-even )
+      )
+   )
+)
+
+( define ( roll-for-odd-even-odd )
+   ( roll-for-odd )
+   ( roll-for-even )
+   
+   ( define result ( roll-die ) )
+   ( display result )
+   ( display " " )
+   
+   ( cond
+      ( ( even? result ) 
         ( roll-for-odd-even-odd )
       )
-      ( else
-           ( cond
-              ( ( odd? result )
-                ( define result ( roll-die ) )
-                ( display result )
-                ( display " " )
-
-                ( cond
-                   ( even? result )
-                   ( roll-for-odd-even-odd )
-                )
-              )
-           )
-       )
    )
 )
