@@ -1,0 +1,10 @@
+#lang racket
+
+; See spec - demo too long
+
+( ( lambda ( a b c )
+     ( define final-list ( reverse ( list a b c ) ) )
+     final-list
+   )
+  '10 '20 '30
+)
