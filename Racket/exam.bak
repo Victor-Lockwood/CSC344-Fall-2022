@@ -1,0 +1,8 @@
+#lang racket
+
+( define ( diamond side col1 col2 )
+   ( above
+     ( triangle side 'solid col1 )
+     ( rotate 180 ( triangle side 'solid col2 ) )
+   )
+)
