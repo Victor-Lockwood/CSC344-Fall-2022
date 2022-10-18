@@ -1,0 +1,13 @@
+#lang racket
+
+; Modified CLISP code from CSC416 assignments of mine where applicable
+( define ( generate-uniform-list n lo )
+    ( cond
+        ( ( = n 0 )
+            ()
+        )
+        ( t
+            ( cons lo ( generate-uniform-list ( - n 1 ) lo ) )
+        )
+    )
+)
