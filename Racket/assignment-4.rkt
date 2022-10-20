@@ -106,3 +106,20 @@
 ( define ( sort-dots loc )
    ( sort loc #:key image-width < )
 )
+
+; ----------------------
+; TASK 7
+; ----------------------
+
+( define ( single-diamond )
+   ( rotate 45 ( square ( random 20 400 ) "solid" ( random-color ) ) )
+)
+
+( define ( diamond n )
+   ( define diamond-list ( generate-list n single-diamond ) )
+   ( foldr overlay empty-image ( sort-dots diamond-list ) )
+)
+
+; ----------------------
+; TASK 8
+; ----------------------
