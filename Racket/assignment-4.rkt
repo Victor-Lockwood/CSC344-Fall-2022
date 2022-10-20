@@ -164,3 +164,16 @@
 ( define ( color->box color )
    ( cdr ( assoc color cb-a-list ) )
 )
+
+; ----------------------
+; TASK 9
+; ----------------------
+
+( define menu
+   '( ( mayosurprise . 78.99 )
+      ( grandpaslastlemon . 21 )
+      ( oldteabag . 3)
+      ( abcgum . 7 )
+      ( mysteryfridgemold . 44 )
+     )
+ )
