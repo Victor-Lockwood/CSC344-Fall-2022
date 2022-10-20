@@ -123,3 +123,44 @@
 ; ----------------------
 ; TASK 8
 ; ----------------------
+
+( define ( play pitch-list )
+   ( define color-list ( map pc->color pitch-list ) )
+   ( define box-list ( map color->box color-list ) )
+   ( foldr beside empty-image box-list )
+)
+
+; Auxillary Functions
+
+( define pitch-classes '( c d e f g a b ) )
+( define color-names '( blue green brown purple red yellow orange ) )
+
+( define ( box color )
+   ( overlay
+     ( square 30 "solid" color )
+     ( square 35 "solid" "black" )
+   )
+)
+
+( define boxes
+   ( list
+     ( box "blue" )
+     ( box "green" )
+     ( box "brown" )
+     ( box "purple" )
+     ( box "red" )
+     ( box "gold" )
+     ( box "orange" )
+    )
+)
+
+( define pc-a-list ( a-list pitch-classes color-names ) )
+( define cb-a-list ( a-list color-names boxes ) )
+
+( define ( pc->color pc )
+   ( cdr ( assoc pc pc-a-list ) )
+)
+
+( define ( color->box color )
+   ( cdr ( assoc color cb-a-list ) )
+)
