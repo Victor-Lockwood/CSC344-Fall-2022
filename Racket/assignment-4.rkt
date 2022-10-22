@@ -175,5 +175,53 @@
       ( oldteabag . 3)
       ( abcgum . 7 )
       ( mysteryfridgemold . 44 )
+      ( ancientrelish . 0.50)
      )
  )
+
+( define sales
+   '( abcgum
+      abcgum
+      mysteryfridgemold
+      oldteabag
+      grandpaslastlemon
+      grandpaslastlemon
+      ancientrelish
+      mayosurprise
+      oldteabag
+      ancientrelish
+
+      oldteabag
+      abcgum
+      grandpaslastlemon
+      mayosurprise
+      ancientrelish
+      ancientrelish
+      mysteryfridgemold
+      mysteryfridgemold
+      oldteabag
+      abcgum
+      oldteabag
+
+      grandpaslastlemon
+      grandpaslastlemon
+      mayosurprise
+      oldteabag
+      ancientrelish
+      oldteabag
+      abcgum
+      grandpaslastlemon
+      mayosurprise
+      mayosurprise
+    )
+)
+
+( define ( item->price item )
+   ( cdr ( assoc item menu ) )
+)
+
+( define ( total solditems menuitem )
+   ( define occurences ( filter ( lambda (l) ( eq? l menuitem ) ) solditems ) )
+   ( define pricelist ( map item->price occurences ) )
+   ( foldr + 0 pricelist )
+)
