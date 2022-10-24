@@ -225,3 +225,81 @@
    ( define pricelist ( map item->price occurences ) )
    ( foldr + 0 pricelist )
 )
+
+; ----------------------
+; TASK 10
+; ----------------------
+
+( define AI (text "A" 36 "orange") )
+( define BI (text "B" 36 "red") )
+( define CI (text "C" 36 "blue") )
+
+( define DI (text "D" 36 "brown") )
+( define EI (text "E" 36 "green") )
+( define FI (text "F" 36 "orchid") )
+
+( define GI (text "G" 36 "gold") )
+( define HI (text "H" 36 "olive") )
+( define II (text "I" 36 "cornflowerblue") )
+
+( define JI (text "J" 36 "darkslategray") )
+( define KI (text "K" 36 "plum") )
+( define LI (text "L" 36 "silver") )
+
+( define MI (text "M" 36 "fuchsia") )
+( define NI (text "N" 36 "limegreen") )
+( define OI (text "O" 36 "chocolate") )
+
+( define PI (text "P" 36 "coral") )
+( define QI (text "Q" 36 "crimson") )
+( define RI (text "R" 36 "sienna") )
+
+( define SI (text "S" 36 "tan") )
+( define TI (text "T" 36 "hotpink") )
+( define UI (text "U" 36 "springgreen") )
+
+( define VI (text "V" 36 "midnightblue") )
+( define WI (text "W" 36 "thistle") )
+( define XI (text "X" 36 "cadetblue") )
+
+( define YI (text "Y" 36 "firebrick") )
+( define ZI (text "Z" 36 "dimgray") )
+
+( define alphabet
+   '(
+     A B C
+     D E F
+     G H I
+     J K L
+     M N O
+     P Q R
+     S T U
+     V W X
+     Y Z
+    )
+)
+
+( define alphapic
+   ( list
+     AI BI CI
+     DI EI FI
+     GI HI II
+     JI KI LI
+     MI NI OI
+     PI QI RI
+     SI TI UI
+     VI WI XI
+     YI ZI
+    )
+)
+
+( define a->i ( a-list alphabet alphapic ) )
+
+( define ( letter->image letter )
+   ( cdr ( assoc letter a->i ) )
+)
+
+( define ( gcs letter-list )
+   ( define image-list ( map letter->image letter-list ) )
+   ( foldr beside empty-image image-list )
+)
