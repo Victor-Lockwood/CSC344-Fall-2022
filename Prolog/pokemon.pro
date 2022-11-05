@@ -82,6 +82,7 @@ display_names :-
     pokemon(name(N), _, _, _),
     write(N), nl,
     fail.
+display_names.
 
 
 % --------------------------------------------
@@ -92,6 +93,7 @@ display_attacks :-
     pokemon(_, _, _, attack(A, _)),
     write(A), nl,
     fail.
+display_attacks.
 
 
 % --------------------------------------------
@@ -133,6 +135,7 @@ display_cen :-
     cen(N),
     write(N), nl, 
     fail.
+display_cen.
 
 
 % --------------------------------------------
@@ -155,6 +158,7 @@ families :-
     cen(N),
     family(N), nl,
     fail.
+families.
 
 % --------------------------------------------
 % lineage(N) :: Displays all information for the Pokemon N and each one that 
