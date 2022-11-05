@@ -59,3 +59,55 @@ make_set([H|T],TS) :-
     make_set(T,TS).
 make_set([H|T],[H|TS]) :-
     make_set(T,TS).
+
+% --------------------------------------------
+% Newly defined predicates
+% --------------------------------------------
+
+product([],1).
+product([Head|Tail],Product) :-
+    product(Tail,ProductOfTail),
+    Product is Head * ProductOfTail.
+
+factorial(Num, Factorial) :-
+    iota(Num, Iota),
+    product(Iota, Product),
+    Factorial is Product.
+
+make_list(0, _, _).
+make_list(Occurences, Item, List) :-
+    K is Occurences - 1,
+    make_list(K, Item, ListK),
+    add_last(Item, ListK, List).
+
+% This is pretty much the same as last...?
+but_first([_|Cdr], Cdr).
+
+but_last(L, List) :-
+    reverse(L, FirstPass),
+    but_first(FirstPass, Cdr),
+    reverse(Cdr, List).
+
+is_palindrome([]).
+is_palindrome(List) :-
+    length(List, L),
+    L = 1.
+is_palindrome(List) :-
+    first(List, H),
+    last(List, L),
+    L = H,
+    but_last(List, Truncated),
+    but_first(Truncated, Final),
+    is_palindrome(Final).
+
+noun_phrase(NP) :-
+    pick([potato, tomato, habanero, taquito, emoji, shirt, controller, fridge], Noun),
+    pick([spicy, large, evil, deceptive, annoying, boring], Adjective),
+    NP = [the, Adjective, Noun].
+
+sentence(S) :-
+    noun_phrase(NP1),
+    noun_phrase(NP2),
+    pick([ate, destroyed, wrote, buried, vetoed, threw, stamped], Verb),
+    append(NP1, [Verb], S0),
+    append(S0, NP2, S).
