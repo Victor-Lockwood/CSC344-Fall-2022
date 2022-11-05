@@ -100,3 +100,81 @@ display_attacks :-
 powerful(N) :-
     pokemon(name(N), _, _, attack(_, D)),
     D > 55.
+
+
+% --------------------------------------------
+% tough(N) :: Returns true if Pokemon with name N has an an HP value > 100 
+
+tough(N) :-
+    pokemon(name(N), _, hp(HP), _),
+    HP > 100.
+
+
+% --------------------------------------------
+% type(N, T) :: Returns true if the Pokemon with the specified name N is type T
+
+type(N, T) :-
+    pokemon(name(N), T, _, _).
+
+
+% --------------------------------------------
+% dump_kind(T) :: Displays all information of Pokemon of type T
+
+dump_kind(T) :-
+    pokemon(N, T, HP, A),
+    write(pokemon(N, T, HP, A)), nl,
+    fail.
+
+
+% --------------------------------------------
+% display_cen :: Display the names of all "creatio ex nihilo" Pokemon
+
+display_cen :-
+    cen(N),
+    write(N), nl, 
+    fail.
+
+
+% --------------------------------------------
+% family(N) :: Display the evolutionary family of a 
+% "creatio ex nihilo" Pokemon with name N 
+
+family(N) :-
+    evolves(N, X),
+    evolves(X, Y),
+    write(N), write(' '), write(X), write(' '), write(Y).
+family(N) :-
+    evolves(N, X),
+    write(N), write(' '), write(X).
+
+
+% --------------------------------------------
+% families :: Displays all evolutionary families
+
+families :-
+    cen(N),
+    family(N), nl,
+    fail.
+
+% --------------------------------------------
+% lineage(N) :: Displays all information for the Pokemon N and each one that 
+% comes after it evolutionarily
+
+lineage(N) :-
+    evolves(N, X),
+    evolves(X, Y),
+    pokemon(name(N), T1, HP1, A1),
+    pokemon(name(X), T2, HP2, A2),
+    pokemon(name(Y), T3, HP3, A3),
+    write(pokemon(name(N), T1, HP1, A1)), nl,
+    write(pokemon(name(X), T2, HP2, A2)), nl,
+    write(pokemon(name(Y), T3, HP3, A3)).
+lineage(N) :-
+    evolves(N, X),
+    pokemon(name(N), T1, HP1, A1),
+    pokemon(name(X), T2, HP2, A2),
+    write(pokemon(name(N), T1, HP1, A1)), nl,
+    write(pokemon(name(X), T2, HP2, A2)).
+lineage(N) :-
+    pokemon(name(N), T, HP, A),
+    write(pokemon(name(N), T, HP, A)).
