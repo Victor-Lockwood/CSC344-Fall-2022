@@ -3,7 +3,7 @@
 % --- File: pokemon.pro
 % --- Line: Just a few facts about pokemon
 % -----------------------------------------------------------------------
-% This was written by Professor Graci.
+% Facts were written by Professor Graci.
 
 % -----------------------------------------------------------------------
 % --- cen(P) :: Pokemon P was "creatio ex nihilo"
@@ -67,3 +67,36 @@ pokemon(name(blastoise), water, hp(140), attack(hydro-pump, 60)).
 
 pokemon(name(staryu), water, hp(40), attack(slap, 20)).
 pokemon(name(starmie), water, hp(60), attack(star-freeze, 20)).
+
+
+
+% --------------------------------------------
+% Added Rules
+% --------------------------------------------
+
+
+% --------------------------------------------
+% display_names :: displays the names of all Pokemon
+
+display_names :-
+    pokemon(name(N), _, _, _),
+    write(N), nl,
+    fail.
+
+
+% --------------------------------------------
+% display_attacks :: displays the names of 
+% each Pokemon's attack
+
+display_attacks :-
+    pokemon(_, _, _, attack(A, _)),
+    write(A), nl,
+    fail.
+
+
+% --------------------------------------------
+% powerful(N) :: Returns true if Pokemon with name N has an attack that deals > 55 damage 
+
+powerful(N) :-
+    pokemon(name(N), _, _, attack(_, D)),
+    D > 55.
