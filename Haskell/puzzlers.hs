@@ -23,6 +23,11 @@ averageWordLength wordString =
 
 
 -------------------------------
+-- RECURSION
+-------------------------------
+
+
+-------------------------------
 -- list2set: Takes a list of objects with duplicates removed
 
 list2set [] = []
@@ -52,3 +57,20 @@ collatz x =
     if (odd x)
     then x : collatz (3 * x + 1)
     else x : collatz (div x 2)
+
+
+-------------------------------
+-- LIST COMPREHENSIONS
+-------------------------------
+
+
+-------------------------------
+-- count: Returns the number of times the indicated object appears in a list
+
+count e l = length [ x | x <- l, x == e]
+
+
+-------------------------------
+-- freqTable: Returns a list of ordered pairs of each element and the number of times they appear in a list
+
+freqTable list = [(e, count e list) | e <- list2set list]
