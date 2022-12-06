@@ -27,3 +27,23 @@ x = [1,9,2,8,3,7,2,8,1,9]
 
 pairwiseValues :: [Int] -> [(Int, Int)]
 pairwiseValues xs = zipWith (\x y -> (x,y)) xs ( tail xs )
+
+
+-------------------------------
+-- pairwiseDifferences: Takes a list of Int values as its sole parameter, 
+--                      which produces a list of Int values consisting of 
+--                      pairwise differences of each element in the list 
+--                      with its successor
+
+pairwiseDifferences :: [Int] -> [Int]
+pairwiseDifferences xs = map ( \(x,y) -> x - y ) ( pairwiseValues xs )
+
+
+-------------------------------
+-- pairwiseSums: Takes a list of Int values as its sole parameter, 
+--                      which produces a list of Int values consisting of 
+--                      pairwise sums of each element in the list 
+--                      with its successor
+
+pairwiseSums :: [Int] -> [Int]
+pairwiseSums xs = map ( \(x,y) -> x + y ) ( pairwiseValues xs )
