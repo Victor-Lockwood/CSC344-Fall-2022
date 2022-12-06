@@ -69,3 +69,37 @@ pairwiseHalves xs = map half xs
 
 pairwiseHalfSums :: [Int] -> [Double]
 pairwiseHalfSums xs = pairwiseHalves ( pairwiseSums xs )
+
+
+-------------------------------
+-- pairwiseTermPairs: Takes a list of Int values as its sole parameter, 
+--                    which produces a list of pairs corresponding to the 
+--                    numerators/denominator in the summation of the nPVI formula.
+
+pairwiseTermPairs :: [Int] -> [(Int,Double)]
+pairwiseTermPairs xs = zip ( pairwiseDifferences xs ) ( pairwiseHalfSums xs )
+
+
+-------------------------------
+-- term: Transforms a given “(numerator,denominator) pair” into an evaluated 
+--       term for the summation operation
+
+term :: (Int,Double) -> Double
+term ndPair = abs ( fromIntegral ( fst ndPair ) / ( snd ndPair ) )
+
+
+-------------------------------
+-- pairwiseTerms: Takes a list of Int values as its sole parameter, which 
+--                produces a list of Double values corresponding to the 
+--                terms in the summation of the nPVI formula
+
+pairwiseTerms :: [Int] -> [Double]
+pairwiseTerms xs = map term ( pairwiseTermPairs xs ) 
+
+
+-------------------------------
+-- nPVI: The final nPVI calculation
+
+nPVI :: [Int] -> Double
+nPVI xs = normalizer xs * sum ( pairwiseTerms xs )
+    where normalizer xs = 100 / fromIntegral ( ( length xs ) - 1 )
