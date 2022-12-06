@@ -47,3 +47,25 @@ pairwiseDifferences xs = map ( \(x,y) -> x - y ) ( pairwiseValues xs )
 
 pairwiseSums :: [Int] -> [Int]
 pairwiseSums xs = map ( \(x,y) -> x + y ) ( pairwiseValues xs )
+
+
+half :: Int -> Double
+half number = ( fromIntegral number ) / 2
+
+
+-------------------------------
+-- pairwiseHalves: Takes a list of Int values as its sole parameter, 
+--                 which produces a list of Double values by dividing 
+--                 each value in the input list by 2
+
+pairwiseHalves :: [Int] -> [Double]
+pairwiseHalves xs = map half xs
+
+
+-------------------------------
+-- pairwiseHalfSums: Takes a list of Int values as its sole parameter, 
+--                   which produces a list of Double values by dividing 
+--                   each pairwise sum by 2
+
+pairwiseHalfSums :: [Int] -> [Double]
+pairwiseHalfSums xs = pairwiseHalves ( pairwiseSums xs )
