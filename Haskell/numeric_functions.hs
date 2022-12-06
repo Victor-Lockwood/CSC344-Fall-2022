@@ -1,5 +1,5 @@
 -------------------------------
--- File: numeric_unctions.hs
+-- File: numeric_functions.hs
 -------------------------------
 
 
